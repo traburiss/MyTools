@@ -18,14 +18,12 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.annotation.GlideModule;
 import com.traburiss.tools.recycle.itemdecoration.CommonItemDecoration;
 import com.traburiss.tools.recycle.RecycleViewAdapter;
-import com.traburiss.tools.recycle.RecycleViewViewHolder;
+import com.traburiss.tools.recycle.RecycleViewHolder;
 import com.traburiss.tools.utils.UnitUtils;
-import com.traburiss.tools.view.headerlayout.HeadLayoutSetter;
-import com.traburiss.tools.view.headerlayout.HeaderLayout;
+import com.traburiss.tools.view.headerlayout.TitleBarSetter;
+import com.traburiss.tools.view.headerlayout.TitleBar;
 import com.traburiss.tools.utils.ToastUtils;
 
 import java.util.ArrayList;
@@ -50,10 +48,10 @@ public class MainActivity extends AppCompatActivity {
                 .error(R.mipmap.ic_launcher_round)
                 .into((ImageView) findViewById(R.id.iv_test));
 
-        HeaderLayout hl_title = (HeaderLayout) findViewById(R.id.hl_title);
-        new HeadLayoutSetter(hl_title)
+        TitleBar hl_title = (TitleBar) findViewById(R.id.hl_title);
+        new TitleBarSetter(hl_title)
                 .setTitle("标题")
-                .addButton("替换", HeadLayoutSetter.ViewLocation.LEFT, new View.OnClickListener() {
+                .addButton("替换", TitleBarSetter.ViewLocation.LEFT, new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
 
@@ -82,14 +80,14 @@ public class MainActivity extends AppCompatActivity {
                                 .create().show();
                     }
                 })
-                .addButton("插入", R.mipmap.ic_launcher_round, 20, 0xffffccff, HeadLayoutSetter.ViewLocation.RIGHT, new View.OnClickListener() {
+                .addButton("插入", R.mipmap.ic_launcher_round, 20, 0xffffccff, TitleBarSetter.ViewLocation.RIGHT, new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
 
                         startActivity(new Intent(MainActivity.this, KotlinActivity.class));
                     }
                 })
-                .addImageButton(R.mipmap.ic_launcher, R.mipmap.ic_launcher_round, HeadLayoutSetter.ViewLocation.LEFT, new View.OnClickListener() {
+                .addImageButton(R.mipmap.ic_launcher, R.mipmap.ic_launcher_round, TitleBarSetter.ViewLocation.LEFT, new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
 
@@ -118,7 +116,7 @@ public class MainActivity extends AppCompatActivity {
                                 .create().show();
                     }
                 })
-                .addButton("换结构", HeadLayoutSetter.ViewLocation.RIGHT, new View.OnClickListener(){
+                .addButton("换结构", TitleBarSetter.ViewLocation.RIGHT, new View.OnClickListener(){
 
                     @Override
                     public void onClick(View v) {
@@ -158,7 +156,7 @@ public class MainActivity extends AppCompatActivity {
                         }
                     }
                 })
-                .addText("2text", 20, 0xffffcccc, HeadLayoutSetter.ViewLocation.CENTER)
+                .addText("2text", 20, 0xffffcccc, TitleBarSetter.ViewLocation.CENTER)
                 .Set();
         initList();
     }
@@ -220,7 +218,7 @@ public class MainActivity extends AppCompatActivity {
         };
         adapter = new RecycleViewAdapter<Object>(this, support, list) {
             @Override
-            public void bindDataWitHView(RecycleViewViewHolder holder, int position, int viewType) {
+            public void bindDataWitHView(RecycleViewHolder holder, int position, int viewType) {
 
                 holder.getConvertView().setBackgroundColor((int)(Math.random() * 0xFFFFFF) + 0xFF000000);
                 if (viewType == 0){
@@ -268,7 +266,7 @@ public class MainActivity extends AppCompatActivity {
         }
         RecycleViewAdapter<String> headerAdapter = new RecycleViewAdapter<String>(this, R.layout.item, headdata) {
             @Override
-            public void bindDataWitHView(RecycleViewViewHolder holder, int position, int viewType) {
+            public void bindDataWitHView(RecycleViewHolder holder, int position, int viewType) {
 
                 TextView textview = holder.getView(R.id.tv_item);
                 textview.setText(headdata.get(position));
@@ -289,7 +287,7 @@ public class MainActivity extends AppCompatActivity {
         }
         RecycleViewAdapter<String> footAd = new RecycleViewAdapter<String>(this, R.layout.item, footDa) {
             @Override
-            public void bindDataWitHView(RecycleViewViewHolder holder, int position, int viewType) {
+            public void bindDataWitHView(RecycleViewHolder holder, int position, int viewType) {
 
                 TextView textview = holder.getView(R.id.tv_item);
                 textview.setText(footDa.get(position));
@@ -319,7 +317,7 @@ public class MainActivity extends AppCompatActivity {
         rv_list.setAdapter(adapter);
     }
 
-    private class NormalAdapter extends RecyclerView.Adapter<RecycleViewViewHolder>{
+    private class NormalAdapter extends RecyclerView.Adapter<RecycleViewHolder>{
 
         List<String> data;
         private LayoutInflater layoutInflater;
@@ -331,13 +329,13 @@ public class MainActivity extends AppCompatActivity {
         }
 
         @Override
-        public RecycleViewViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
+        public RecycleViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
 
-            return new RecycleViewViewHolder(layoutInflater.inflate(R.layout.item, viewGroup, false));
+            return new RecycleViewHolder(layoutInflater.inflate(R.layout.item, viewGroup, false));
         }
 
         @Override
-        public void onBindViewHolder(RecycleViewViewHolder recycleViewViewHolder, int i) {
+        public void onBindViewHolder(RecycleViewHolder recycleViewViewHolder, int i) {
 
             TextView textView = recycleViewViewHolder.getView(R.id.tv_item);
             textView.setText(data.get(i));

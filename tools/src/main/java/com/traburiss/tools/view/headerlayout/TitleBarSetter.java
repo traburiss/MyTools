@@ -12,7 +12,7 @@ import java.util.HashMap;
  * @version 1.0
  */
 @SuppressWarnings("unused")
-public class HeadLayoutSetter {
+public class TitleBarSetter {
 
     final static String TYPE = "type";
     final static String PART = "part";
@@ -38,14 +38,14 @@ public class HeadLayoutSetter {
     }
 
 
-    private HeaderLayout headerLayout;
+    private TitleBar headerLayout;
 
     String titleText;
     float titleFontSize = 23;
     int titleFontColor = 0xFFFFFFFF;
     ArrayList<HashMap<String, Object>> addViewsInfo;
 
-    public HeadLayoutSetter(HeaderLayout headerLayout) {
+    public TitleBarSetter(TitleBar headerLayout) {
 
         this.headerLayout = headerLayout;
         addViewsInfo = new ArrayList<>();
@@ -57,7 +57,7 @@ public class HeadLayoutSetter {
      * @param title 标题文本
      * @return 对象本身，用于链式调用
      */
-    public HeadLayoutSetter setTitle(String title) {
+    public TitleBarSetter setTitle(String title) {
 
         this.titleText = title;
         return this;
@@ -71,7 +71,7 @@ public class HeadLayoutSetter {
      * @param titleFontColor 标题字体颜色
      * @return 对象本身，用于链式调用
      */
-    public HeadLayoutSetter setTitle(String title, float titleFontSize, int titleFontColor) {
+    public TitleBarSetter setTitle(String title, float titleFontSize, int titleFontColor) {
 
         this.titleFontSize = titleFontSize;
         this.titleFontColor = titleFontColor;
@@ -86,7 +86,7 @@ public class HeadLayoutSetter {
      * @param part 文本位置，包括PART_LEFT 以及 PART_RIGHT
      * @return 对象本身，用于链式调用
      */
-    public HeadLayoutSetter addText(String text, ViewLocation part) {
+    public TitleBarSetter addText(String text, ViewLocation part) {
 
         HashMap<String, Object> textInfo = new HashMap<>();
         textInfo.put(TYPE, ViewType.TEXT_VIEW);
@@ -105,7 +105,7 @@ public class HeadLayoutSetter {
      * @param part           文本位置，包括PART_LEFT(放到标题左边) 以及 PART_RIGHT（放到标题右边）
      * @return 对象本身，用于链式调用
      */
-    public HeadLayoutSetter addText(String text, float titleFontSize, int titleFontColor, ViewLocation part) {
+    public TitleBarSetter addText(String text, float titleFontSize, int titleFontColor, ViewLocation part) {
 
         HashMap<String, Object> textInfo = new HashMap<>();
         textInfo.put(TYPE, ViewType.TEXT_VIEW);
@@ -125,7 +125,7 @@ public class HeadLayoutSetter {
      * @param part            按钮位置，包括PART_LEFT(放到标题左边) 以及 PART_RIGHT（放到标题右边）
      * @return 对象本身，用于链式调用
      */
-    public HeadLayoutSetter addButton(String text, ViewLocation part, View.OnClickListener onClickListener) {
+    public TitleBarSetter addButton(String text, ViewLocation part, View.OnClickListener onClickListener) {
 
         HashMap<String, Object> buttonInfo = new HashMap<>();
         buttonInfo.put(TYPE, ViewType.BUTTON);
@@ -147,7 +147,7 @@ public class HeadLayoutSetter {
      * @param part            按钮位置，包括PART_LEFT(放到标题左边) 以及 PART_RIGHT（放到标题右边）
      * @return 对象本身，用于链式调用
      */
-    public HeadLayoutSetter addButton(String text, int backId, float fontSize, int fontColor, ViewLocation part, View.OnClickListener onClickListener) {
+    public TitleBarSetter addButton(String text, int backId, float fontSize, int fontColor, ViewLocation part, View.OnClickListener onClickListener) {
 
         HashMap<String, Object> buttonInfo = new HashMap<>();
         buttonInfo.put(TYPE, ViewType.BUTTON);
@@ -170,7 +170,7 @@ public class HeadLayoutSetter {
      * @param part            按钮位置，包括PART_LEFT(放到标题左边) 以及 PART_RIGHT（放到标题右边）
      * @return 对象本身，用于链式调用
      */
-    public HeadLayoutSetter addImageButton(int backId, int imageId, ViewLocation part, View.OnClickListener onClickListener) {
+    public TitleBarSetter addImageButton(int backId, int imageId, ViewLocation part, View.OnClickListener onClickListener) {
 
         HashMap<String, Object> imageButtonInfo = new HashMap<>();
         imageButtonInfo.put(TYPE, ViewType.IMAGE_BUTTON);
@@ -189,7 +189,7 @@ public class HeadLayoutSetter {
      * @param part 按钮位置，包括PART_LEFT(放到标题左边) 以及 PART_RIGHT（放到标题右边）
      * @return 对象本身，用于链式调用
      */
-    public HeadLayoutSetter addView(View view, ViewLocation part) {
+    public TitleBarSetter addView(View view, ViewLocation part) {
 
         HashMap<String, Object> viewInfo = new HashMap<>();
         viewInfo.put(TYPE, ViewType.VIEW);

@@ -4,12 +4,12 @@ import android.support.v7.widget.RecyclerView.ViewHolder;
 import android.util.SparseArray;
 import android.view.View;
 
-public class RecycleViewViewHolder extends ViewHolder {
+public class RecycleViewHolder extends ViewHolder {
 
 	private SparseArray<View> mViews;
 	private View mConvertView;
 
-	public RecycleViewViewHolder(View itemView) {
+	public RecycleViewHolder(View itemView) {
 
 		super(itemView);
 		mConvertView = itemView;

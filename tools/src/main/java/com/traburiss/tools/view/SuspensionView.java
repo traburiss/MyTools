@@ -44,7 +44,7 @@ public abstract class SuspensionView extends Service {
     public void onCreate() {
 
         super.onCreate();
-        initReady(intent);
+        onReady(intent);
         initRoot();
         initView(root);
         initEven();
@@ -111,7 +111,7 @@ public abstract class SuspensionView extends Service {
         }
     };
 
-    public abstract void initReady(Intent intent);
+    public abstract void onReady(Intent intent);
     public abstract void initView(ViewGroup root);
     public abstract void initEven();
     public abstract void initData(Intent intent);

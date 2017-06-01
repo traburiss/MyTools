@@ -8,7 +8,7 @@
     android:orientation="vertical"
     tools:context="com.traburiss.mytools.MainActivity">
 
-    <com.traburiss.tools.view.headerlayout.HeaderLayout
+    <com.traburiss.tools.view.headerlayout.TitleBar
         android:id="@+id/hl_title"
         android:layout_width="match_parent"
         android:layout_height="48dp"

@@ -21,7 +21,7 @@ import java.util.HashMap;
  * @author traburiss  create at 2017/4/26 0:38
  * @version 1.0
  */
-public class HeaderLayout extends RelativeLayout {
+public class TitleBar extends RelativeLayout {
 
     private LinearLayout leftContainer;
     private LinearLayout centerContainer;
@@ -31,17 +31,17 @@ public class HeaderLayout extends RelativeLayout {
     private static final int WHITE = 0XFFFFFFFF;
     private static final int TRANSPARENT = 0X00000000;
 
-    public HeaderLayout(Context context) {
+    public TitleBar(Context context) {
         super(context);
         init();
     }
 
-    public HeaderLayout(Context context, AttributeSet attrs) {
+    public TitleBar(Context context, AttributeSet attrs) {
         super(context, attrs);
         init();
     }
 
-    public HeaderLayout(Context context, AttributeSet attrs, int defStyle) {
+    public TitleBar(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
         init();
     }
@@ -109,7 +109,7 @@ public class HeaderLayout extends RelativeLayout {
      *
      * @param headLayoutSetter 设置好的Setter
      */
-    void init(HeadLayoutSetter headLayoutSetter) {
+    void init(TitleBarSetter headLayoutSetter) {
 
         initTitle(headLayoutSetter.titleText, headLayoutSetter.titleFontSize, headLayoutSetter.titleFontColor);
         addViews(headLayoutSetter.addViewsInfo);
@@ -147,7 +147,7 @@ public class HeaderLayout extends RelativeLayout {
         for (int i = 0; i < addViewsInfo.size(); i++) {
 
             HashMap<String, Object> addViewInfo = addViewsInfo.get(i);
-            HeadLayoutSetter.ViewType type = (HeadLayoutSetter.ViewType) addViewInfo.get(HeadLayoutSetter.TYPE);
+            TitleBarSetter.ViewType type = (TitleBarSetter.ViewType) addViewInfo.get(TitleBarSetter.TYPE);
             switch (type) {
                 case TEXT_VIEW:
                     addText(addViewInfo);
@@ -174,8 +174,8 @@ public class HeaderLayout extends RelativeLayout {
      */
     private void addText(HashMap<String, Object> addViewInfo) {
 
-        HeadLayoutSetter.ViewLocation part = (HeadLayoutSetter.ViewLocation) addViewInfo.get(HeadLayoutSetter.PART);
-        String text = addViewInfo.get(HeadLayoutSetter.TEXT).toString();
+        TitleBarSetter.ViewLocation part = (TitleBarSetter.ViewLocation) addViewInfo.get(TitleBarSetter.PART);
+        String text = addViewInfo.get(TitleBarSetter.TEXT).toString();
 
         TextView textView = new TextView(getContext());
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.MATCH_PARENT);
@@ -200,13 +200,13 @@ public class HeaderLayout extends RelativeLayout {
                 break;
         }
 
-        if (addViewInfo.containsKey(HeadLayoutSetter.FONT_SIZE)) {
+        if (addViewInfo.containsKey(TitleBarSetter.FONT_SIZE)) {
 
-            textView.setTextSize((float) addViewInfo.get(HeadLayoutSetter.FONT_SIZE));
+            textView.setTextSize((float) addViewInfo.get(TitleBarSetter.FONT_SIZE));
         }
-        if (addViewInfo.containsKey(HeadLayoutSetter.COLOR)) {
+        if (addViewInfo.containsKey(TitleBarSetter.COLOR)) {
 
-            textView.setTextColor((int) addViewInfo.get(HeadLayoutSetter.COLOR));
+            textView.setTextColor((int) addViewInfo.get(TitleBarSetter.COLOR));
         }
 
         if (null != text) {
@@ -223,8 +223,8 @@ public class HeaderLayout extends RelativeLayout {
      */
     private void addButton(HashMap<String, Object> addViewInfo) {
 
-        HeadLayoutSetter.ViewLocation part = (HeadLayoutSetter.ViewLocation) addViewInfo.get(HeadLayoutSetter.PART);
-        String text = addViewInfo.get(HeadLayoutSetter.TEXT).toString();
+        TitleBarSetter.ViewLocation part = (TitleBarSetter.ViewLocation) addViewInfo.get(TitleBarSetter.PART);
+        String text = addViewInfo.get(TitleBarSetter.TEXT).toString();
 
         Button button = new Button(getContext());
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.MATCH_PARENT);
@@ -247,21 +247,21 @@ public class HeaderLayout extends RelativeLayout {
                 break;
         }
 
-        if (addViewInfo.containsKey(HeadLayoutSetter.BACK_ID)) {
+        if (addViewInfo.containsKey(TitleBarSetter.BACK_ID)) {
 
-            button.setBackgroundResource((int) addViewInfo.get(HeadLayoutSetter.BACK_ID));
+            button.setBackgroundResource((int) addViewInfo.get(TitleBarSetter.BACK_ID));
         }
-        if (addViewInfo.containsKey(HeadLayoutSetter.FONT_SIZE)) {
+        if (addViewInfo.containsKey(TitleBarSetter.FONT_SIZE)) {
 
-            button.setTextSize((float) addViewInfo.get(HeadLayoutSetter.FONT_SIZE));
+            button.setTextSize((float) addViewInfo.get(TitleBarSetter.FONT_SIZE));
         }
-        if (addViewInfo.containsKey(HeadLayoutSetter.COLOR)) {
+        if (addViewInfo.containsKey(TitleBarSetter.COLOR)) {
 
-            button.setTextColor((int) addViewInfo.get(HeadLayoutSetter.COLOR));
+            button.setTextColor((int) addViewInfo.get(TitleBarSetter.COLOR));
         }
-        if (addViewInfo.containsKey(HeadLayoutSetter.LISTENER)) {
+        if (addViewInfo.containsKey(TitleBarSetter.LISTENER)) {
 
-            button.setOnClickListener((OnClickListener) addViewInfo.get(HeadLayoutSetter.LISTENER));
+            button.setOnClickListener((OnClickListener) addViewInfo.get(TitleBarSetter.LISTENER));
         }
 
         if (null != text) {
@@ -278,7 +278,7 @@ public class HeaderLayout extends RelativeLayout {
      */
     private void addImageButton(HashMap<String, Object> addViewInfo) {
 
-        HeadLayoutSetter.ViewLocation part = (HeadLayoutSetter.ViewLocation) addViewInfo.get(HeadLayoutSetter.PART);
+        TitleBarSetter.ViewLocation part = (TitleBarSetter.ViewLocation) addViewInfo.get(TitleBarSetter.PART);
 
         ImageButton imageButton = new ImageButton(getContext());
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.MATCH_PARENT);
@@ -300,17 +300,17 @@ public class HeaderLayout extends RelativeLayout {
                 break;
         }
 
-        if (addViewInfo.containsKey(HeadLayoutSetter.BACK_ID)) {
+        if (addViewInfo.containsKey(TitleBarSetter.BACK_ID)) {
 
-            imageButton.setBackgroundResource((int) addViewInfo.get(HeadLayoutSetter.BACK_ID));
+            imageButton.setBackgroundResource((int) addViewInfo.get(TitleBarSetter.BACK_ID));
         }
-        if (addViewInfo.containsKey(HeadLayoutSetter.IMAGE_ID)) {
+        if (addViewInfo.containsKey(TitleBarSetter.IMAGE_ID)) {
 
-            imageButton.setImageResource((int) addViewInfo.get(HeadLayoutSetter.IMAGE_ID));
+            imageButton.setImageResource((int) addViewInfo.get(TitleBarSetter.IMAGE_ID));
         }
-        if (addViewInfo.containsKey(HeadLayoutSetter.LISTENER)) {
+        if (addViewInfo.containsKey(TitleBarSetter.LISTENER)) {
 
-            OnClickListener onClickListener = (OnClickListener) addViewInfo.get(HeadLayoutSetter.LISTENER);
+            OnClickListener onClickListener = (OnClickListener) addViewInfo.get(TitleBarSetter.LISTENER);
             imageButton.setOnClickListener(onClickListener);
         }
     }
@@ -322,8 +322,8 @@ public class HeaderLayout extends RelativeLayout {
      */
     private void addView(HashMap<String, Object> addViewInfo) {
 
-        HeadLayoutSetter.ViewLocation part = (HeadLayoutSetter.ViewLocation) addViewInfo.get(HeadLayoutSetter.PART);
-        View view = (View) addViewInfo.get(HeadLayoutSetter.VIEW);
+        TitleBarSetter.ViewLocation part = (TitleBarSetter.ViewLocation) addViewInfo.get(TitleBarSetter.PART);
+        View view = (View) addViewInfo.get(TitleBarSetter.VIEW);
         switch (part) {
             case LEFT:
                 leftContainer.setVisibility(View.VISIBLE);

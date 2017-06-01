@@ -1,7 +1,6 @@
 package com.traburiss.tools.recycle;
 
 import android.content.Context;
-import android.support.v7.util.SortedList;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
@@ -15,7 +14,7 @@ import java.util.List;
  * 这是一个RecycleView的adapter,实现了多种viewType的支持，并且在此基础上实现了一个footer和一个header
  * @param <T> adapter持有的list的数据类型
  */
-public abstract class RecycleViewAdapter<T> extends RecyclerView.Adapter<RecycleViewViewHolder>{
+public abstract class RecycleViewAdapter<T> extends RecyclerView.Adapter<RecycleViewHolder>{
 
 	private List<T> datas;
 	private LayoutInflater layoutInflater;
@@ -171,24 +170,24 @@ public abstract class RecycleViewAdapter<T> extends RecyclerView.Adapter<Recycle
 	}
 
 	@Override
-	public RecycleViewViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+	public RecycleViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
 		switch (viewType){
 
 			case HeaderAndFooterSetter.HEADER:
 
-				return new RecycleViewViewHolder(hafSetter.getHeaderView());
+				return new RecycleViewHolder(hafSetter.getHeaderView());
 			case HeaderAndFooterSetter.FOOTER:
 
-				return new RecycleViewViewHolder(hafSetter.getFooterView());
+				return new RecycleViewHolder(hafSetter.getFooterView());
 			default:
 
-				return new RecycleViewViewHolder(layoutInflater.inflate(setter.getViewIdByType(viewType), parent, false));
+				return new RecycleViewHolder(layoutInflater.inflate(setter.getViewIdByType(viewType), parent, false));
 		}
 	}
 
 	@Override
-	public void onBindViewHolder(RecycleViewViewHolder holder, int position) {
+	public void onBindViewHolder(RecycleViewHolder holder, int position) {
 
 		if (position >= hafSetter.getHeaderCount() && position < getItemCount() - hafSetter.getFooterCount()){
 
@@ -197,7 +196,7 @@ public abstract class RecycleViewAdapter<T> extends RecyclerView.Adapter<Recycle
 		}
 	}
 
-	private void bindListener(RecycleViewViewHolder holder, final int position){
+	private void bindListener(RecycleViewHolder holder, final int position){
 
 		holder.getConvertView().setOnClickListener(new View.OnClickListener() {
 			@Override
@@ -235,7 +234,7 @@ public abstract class RecycleViewAdapter<T> extends RecyclerView.Adapter<Recycle
 		this.onItemLongClickListener = onItemLongClickListener;
 	}
 
-	public abstract void bindDataWitHView(RecycleViewViewHolder holder, int position, int viewType);
+	public abstract void bindDataWitHView(RecycleViewHolder holder, int position, int viewType);
 
 	public class HeaderAndFooterSetter {
 
@@ -328,7 +327,7 @@ public abstract class RecycleViewAdapter<T> extends RecyclerView.Adapter<Recycle
 	 * @param holder holder
 	 */
 	@Override
-	public void onViewAttachedToWindow(RecycleViewViewHolder holder) {
+	public void onViewAttachedToWindow(RecycleViewHolder holder) {
 
 		super.onViewAttachedToWindow(holder);
 		ViewGroup.LayoutParams layoutParams = holder.itemView.getLayoutParams();

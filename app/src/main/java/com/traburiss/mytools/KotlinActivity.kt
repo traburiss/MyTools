@@ -8,7 +8,7 @@ import android.support.v7.widget.StaggeredGridLayoutManager
 import android.widget.TextView
 import com.traburiss.tools.recycle.itemdecoration.CommonItemDecoration
 import com.traburiss.tools.recycle.RecycleViewAdapter
-import com.traburiss.tools.recycle.RecycleViewViewHolder
+import com.traburiss.tools.recycle.RecycleViewHolder
 import com.traburiss.tools.view.refresh.RefreshRecycleView
 import java.util.*
 import kotlin.collections.ArrayList
@@ -28,7 +28,7 @@ class KotlinActivity : AppCompatActivity() {
         rrv.addItemDecoration(object : CommonItemDecoration(this,10f){})
         val adapter = object: RecycleViewAdapter<TestData>(this, R.layout.item, arrayListOf<TestData>()){
 
-            override fun bindDataWitHView(holder: RecycleViewViewHolder, position: Int, viewType: Int) {
+            override fun bindDataWitHView(holder: RecycleViewHolder, position: Int, viewType: Int) {
 
                 val tv: TextView = holder.getView(R.id.tv_item)
                 val data = getData(position)
