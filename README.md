@@ -10,8 +10,8 @@
         * 一个RecycleView的通用ViewHolder->RecycleViewHolder  
         * 一个RecycleView的通用ItemDecoration->CommonItemDecoration,自动适配下面三个ItemDecoration
             * 一个GridLayoutManager用的ItemDecoration->GridDivider  
-            * 一个GridLayoutManager用的ItemDecoration->GridDivider  
-            * 一个GridLayoutManager用的ItemDecoration->GridDivider 
+            * 一个GridLayoutManager用的StaggeredGridLayoutManager->StaggeredGridDivider  
+            * 一个GridLayoutManager用的LinearLayoutManager->LinearDivider 
     2. 工具类
         * 一个用于快速toast的工具类
         * 一个精度值转换的工具类
