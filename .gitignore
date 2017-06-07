@@ -3,9 +3,9 @@
 /local.properties
 /.idea/workspace.xml
 /.idea/libraries
-.DS_Store
 /build
-/captures
-.externalNativeBuild
-/.idea/
 /tools/build/
+app/libs/
+app/src/main/res/drawable/
+tools/libs/
+tools/src/main/res/drawable/
