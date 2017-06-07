@@ -235,7 +235,7 @@ public class RefreshRecycleView extends SwipeRefreshLayout {
 
     public void setSelection(int position) {
 
-        mListView.scrollToPosition(position);
+        mListView.smoothScrollToPosition(position);
     }
 
     public void addHeaderView(View view) {
