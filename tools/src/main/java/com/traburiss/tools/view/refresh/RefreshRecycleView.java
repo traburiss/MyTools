@@ -92,6 +92,15 @@ public class RefreshRecycleView extends SwipeRefreshLayout {
                 }
             }
 
+            @Override
+            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+
+                if (mOnScrollListener != null) {
+
+                    mOnScrollListener.onScrolled(recyclerView, dx, dy);
+                }
+            }
+
             private boolean isEnd(RecyclerView recyclerView) {
 
                 RecyclerView.LayoutManager layoutManager = recyclerView.getLayoutManager();
