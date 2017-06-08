@@ -33,11 +33,11 @@ public class CommonItemDecoration extends RecyclerView.ItemDecoration {
 
     public CommonItemDecoration(Context context){
 
-        this(context,1,android.R.color.black);
+        this(context,2);
     }
     public CommonItemDecoration(Context context, float dpSize){
 
-        this(context,dpSize,android.R.color.black);
+        this(context,dpSize,android.R.color.transparent);
     }
 
     public CommonItemDecoration(Context context, float dpSize, int colorId){
