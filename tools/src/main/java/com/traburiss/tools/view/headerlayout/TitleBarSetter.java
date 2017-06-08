@@ -41,7 +41,7 @@ public class TitleBarSetter {
     private TitleBar headerLayout;
 
     String titleText;
-    float titleFontSize = 23;
+    float titleFontSize = 20;
     int titleFontColor = 0xFFFFFFFF;
     ArrayList<HashMap<String, Object>> addViewsInfo;
 
@@ -67,7 +67,7 @@ public class TitleBarSetter {
      * 设置标题
      *
      * @param title          标题文本
-     * @param titleFontSize  标题字体大小
+     * @param titleFontSize  标题字体大小,单位sp
      * @param titleFontColor 标题字体颜色
      * @return 对象本身，用于链式调用
      */
@@ -83,7 +83,7 @@ public class TitleBarSetter {
      * 添加文本 添加顺序会影响界面上的显示顺序
      *
      * @param text 文本内容
-     * @param part 文本位置，包括PART_LEFT 以及 PART_RIGHT
+     * @param part 文本位置，包括LEFT,CENTER,RIGHT
      * @return 对象本身，用于链式调用
      */
     public TitleBarSetter addText(String text, ViewLocation part) {
@@ -100,9 +100,9 @@ public class TitleBarSetter {
      * 添加文本 添加顺序会影响界面上的显示顺序
      *
      * @param text           文本内容
-     * @param titleFontSize  文本字体大小
+     * @param titleFontSize  文本字体大小,单位sp
      * @param titleFontColor 文本字体颜色
-     * @param part           文本位置，包括PART_LEFT(放到标题左边) 以及 PART_RIGHT（放到标题右边）
+     * @param part           文本位置，包括LEFT,CENTER,RIGHT
      * @return 对象本身，用于链式调用
      */
     public TitleBarSetter addText(String text, float titleFontSize, int titleFontColor, ViewLocation part) {
@@ -122,7 +122,7 @@ public class TitleBarSetter {
      *
      * @param text            按钮文本内容
      * @param onClickListener 按钮点击事件监听器
-     * @param part            按钮位置，包括PART_LEFT(放到标题左边) 以及 PART_RIGHT（放到标题右边）
+     * @param part            按钮位置，包括LEFT,CENTER,RIGHT
      * @return 对象本身，用于链式调用
      */
     public TitleBarSetter addButton(String text, ViewLocation part, View.OnClickListener onClickListener) {
@@ -141,10 +141,10 @@ public class TitleBarSetter {
      *
      * @param text            按钮文本内容
      * @param backId          按钮背景资源id
-     * @param fontSize        按钮文本字体大小
+     * @param fontSize        按钮文本字体大小,单位sp
      * @param fontColor       按钮文本字体颜色
      * @param onClickListener 按钮点击事件监听器
-     * @param part            按钮位置，包括PART_LEFT(放到标题左边) 以及 PART_RIGHT（放到标题右边）
+     * @param part            按钮位置，包括LEFT,CENTER,RIGHT
      * @return 对象本身，用于链式调用
      */
     public TitleBarSetter addButton(String text, int backId, float fontSize, int fontColor, ViewLocation part, View.OnClickListener onClickListener) {
@@ -162,12 +162,31 @@ public class TitleBarSetter {
     }
 
     /**
+     * 添加imageButton 添加顺序会影响界面上的显示顺序,背景默认透明
+     *
+     * @param imageId         按钮图像资源id
+     * @param onClickListener 按钮点击事件监听器
+     * @param part            按钮位置，包括LEFT,CENTER,RIGHT
+     * @return 对象本身，用于链式调用
+     */
+    public TitleBarSetter addImageButton(int imageId, ViewLocation part, View.OnClickListener onClickListener) {
+
+        HashMap<String, Object> imageButtonInfo = new HashMap<>();
+        imageButtonInfo.put(TYPE, ViewType.IMAGE_BUTTON);
+        imageButtonInfo.put(PART, part);
+        imageButtonInfo.put(IMAGE_ID, imageId);
+        imageButtonInfo.put(LISTENER, onClickListener);
+        addViewsInfo.add(imageButtonInfo);
+        return this;
+    }
+
+    /**
      * 添加imageButton 添加顺序会影响界面上的显示顺序
      *
      * @param backId          按钮背景资源id
      * @param imageId         按钮图像资源id
      * @param onClickListener 按钮点击事件监听器
-     * @param part            按钮位置，包括PART_LEFT(放到标题左边) 以及 PART_RIGHT（放到标题右边）
+     * @param part            按钮位置，包括LEFT,CENTER,RIGHT
      * @return 对象本身，用于链式调用
      */
     public TitleBarSetter addImageButton(int backId, int imageId, ViewLocation part, View.OnClickListener onClickListener) {
@@ -186,7 +205,7 @@ public class TitleBarSetter {
      * 添加自定义的view 添加顺序会影响界面上的显示顺序
      *
      * @param view 需要添加进的view
-     * @param part 按钮位置，包括PART_LEFT(放到标题左边) 以及 PART_RIGHT（放到标题右边）
+     * @param part 按钮位置，包括LEFT,CENTER,RIGHT
      * @return 对象本身，用于链式调用
      */
     public TitleBarSetter addView(View view, ViewLocation part) {

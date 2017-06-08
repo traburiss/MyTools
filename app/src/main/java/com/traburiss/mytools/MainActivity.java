@@ -87,7 +87,7 @@ public class MainActivity extends AppCompatActivity {
                         startActivity(new Intent(MainActivity.this, KotlinActivity.class));
                     }
                 })
-                .addImageButton(R.mipmap.ic_launcher, R.mipmap.ic_launcher_round, TitleBarSetter.ViewLocation.LEFT, new View.OnClickListener() {
+                .addImageButton(R.mipmap.ic_launcher_round, TitleBarSetter.ViewLocation.LEFT, new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
 
