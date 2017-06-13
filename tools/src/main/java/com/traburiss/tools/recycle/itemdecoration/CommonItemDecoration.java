@@ -35,9 +35,10 @@ public class CommonItemDecoration extends RecyclerView.ItemDecoration {
 
         this(context,2);
     }
+
     public CommonItemDecoration(Context context, float dpSize){
 
-        this(context,dpSize,android.R.color.transparent);
+        this(context, dpSize, android.R.color.transparent);
     }
 
     public CommonItemDecoration(Context context, float dpSize, int colorId){
@@ -45,10 +46,28 @@ public class CommonItemDecoration extends RecyclerView.ItemDecoration {
         this(context, dpSize, dpSize, colorId);
     }
 
-    public CommonItemDecoration(Context context,float horizonHeight, float verticalWeight, int colorId){
+    public CommonItemDecoration(Context context,float horizonHeightDp, float verticalWeightDp, int colorId){
 
-        this.horizonHeight = UnitUtils.dp2px(context, horizonHeight);
-        this.verticalWeight = UnitUtils.dp2px(context, verticalWeight);
+        this(context,
+                UnitUtils.dp2px(context, horizonHeightDp),
+                UnitUtils.dp2px(context, verticalWeightDp),
+                colorId);
+    }
+
+    public CommonItemDecoration(Context context, int PxSize){
+
+        this(context, PxSize, android.R.color.transparent);
+    }
+
+    public CommonItemDecoration(Context context, int PxSize, int colorId){
+
+        this(context, PxSize, PxSize, colorId);
+    }
+
+    public CommonItemDecoration(Context context,int horizonHeightPx, int verticalWeightPx, int colorId){
+
+        this.horizonHeight = horizonHeightPx;
+        this.verticalWeight = verticalWeightPx;
         this.colorValue = ContextCompat.getColor(context,colorId);
     }
 

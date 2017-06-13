@@ -253,6 +253,14 @@ public class RefreshRecycleView extends SwipeRefreshLayout {
         });
     }
 
+    public void setHeaderView(View view){
+
+        if (adapter != null){
+
+            adapter.setHeaderView(view);
+        }
+    }
+
     public void setOnScrollListener(RecyclerView.OnScrollListener listener) {
 
         mOnScrollListener = listener;
